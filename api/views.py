@@ -37,7 +37,6 @@ def getLikes(pictures, followers):
     c = 0
     for picture in pictures:
         if c == 6: break
-        print(picture)
         likes += picture["node"]["edge_liked_by"]["count"]
         c+=1
     if c > 0: return likes / c / followers
