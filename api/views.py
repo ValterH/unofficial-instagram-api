@@ -1,12 +1,10 @@
 import requests, json
 from django.shortcuts import render, HttpResponse
 
-def index(request):
-    queryDict = request.GET
-    parameters = dict(queryDict.lists())
-    user = parameters['user'][0]
+def index(request, user):
     url = "https://www.instagram.com/" + user + "?__a=1"
     response = requests.get(url)
+    if response.status_code != 200: return HttpResponse('{"error":"Invalid query"}')
     data = json.loads(response.text)
     items = data["graphql"]
     user_data = items["user"]
