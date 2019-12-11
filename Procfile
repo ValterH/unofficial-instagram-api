@@ -1,1 +1,1 @@
-'web: gunicorn mysite.wsgi --log-file -' 
+web: python myApp.py runserver 0.0.0.0:$8000
